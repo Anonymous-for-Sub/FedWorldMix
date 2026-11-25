@@ -54,9 +54,14 @@
   document.querySelector('.replica-figure .figure-view').after(controls);
   function showScenes(){cropReplica(mobile.matches?replicaBox[2]/7*scene:0,0,mobile.matches?replicaBox[2]/7*2:replicaBox[2],replicaBox[3]);replica.setAttribute('viewBox',mobile.matches?`${replicaBox[2]/7*scene} 0 ${replicaBox[2]/7*2} ${replicaBox[3]}`:replicaBox.join(' '));previous.disabled=scene===0;next.disabled=scene===5;}
   previous.addEventListener('click',()=>{scene=Math.max(0,scene-1);showScenes();});next.addEventListener('click',()=>{scene=Math.min(5,scene+1);showScenes();});mobile.addEventListener('change',showScenes);showScenes();
-  document.getElementById('bib-copy').addEventListener('click',async()=>{
-    const text=document.getElementById('bib-text').textContent;let copied=false;
-    try{await navigator.clipboard.writeText(text);copied=true;}catch{const input=document.createElement('textarea');input.value=text;input.style.cssText='position:fixed;opacity:0';document.body.append(input);input.select();copied=document.execCommand('copy');input.remove();}
-    document.getElementById('copy-status').textContent=copied?'Citation copied.':'Select the citation text to copy it.';
-  });
+  // Keep the reading position visible in the compact navigation.
+  const sections=[...document.querySelectorAll('main > section[id]')];
+  let pending=false;
+  function updateSection(){
+    pending=false;let active='';
+    for(const section of sections)if(section.getBoundingClientRect().top<=180)active=section.id;
+    links.querySelectorAll('a').forEach(a=>{if(a.hash==='#'+active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+  }
+  addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(updateSection);}},{passive:true});
+  updateSection();
 })();

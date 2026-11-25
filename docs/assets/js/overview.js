@@ -9,8 +9,15 @@
   const ns='http://www.w3.org/2000/svg';
   const details=[
     {title:'Aligned supervision, different visual evidence',description:'Real, 2D and eligible GS observations reuse the source action target. Their visual content changes while the associated state, action and instruction remain aligned.',equation:'Real · 2D · GS',note:'GS validity is computed from local coverage, visibility and alignment metadata.'},
-    {title:'A stable reference update for the local policy',description:'All sources use the backbone’s native action objective. In the SmolVLA implementation, vision and connector LoRA parameters are trainable while the action expert stays frozen.',equation:'g<sub>base</sub> = g<sub>real</sub> + 0.75 g<sub>2D</sub>',note:'The source coefficients weight gradients; they are not fixed shares of the final update.'},
-    {title:'A bounded correction from eligible GS views',description:'VistaMix restricts the GS gradient to perception parameters, removes strongly opposing components, applies validity weighting and caps the correction relative to the base gradient.',equation:'g<sub>VM</sub> = g<sub>base</sub> + E<sub>v</sub>(ĉ<sub>GS</sub>)',note:'The effective GS coefficient is 0.25 × mean validity × cap multiplier. Without an eligible correction, the base update is used.'},
+    {title:'A stable reference update for the local policy',description:'All sources use the backbone’s native action objective. In the SmolVLA implementation, vision and connector LoRA parameters are trainable while the action expert stays frozen.',equation:'',note:'Real and 2D supervision establish the reference direction. Eligible GS evidence enters through the protected update shown in VistaMix.'},
+    {title:'A bounded correction from eligible GS views',description:'VistaMix restricts the GS gradient to perception parameters, removes strongly opposing components, applies validity weighting and caps the correction relative to the base gradient.',equation:`<div class="mix-equations" aria-label="Complete VistaMix local gradient composition">
+<div class="math-row">g<sub>base</sub> = ∇<sub>φ</sub>(ℒ<sub>r</sub> + λ<sub>2D</sub> ℒ<sub>2D</sub>)</div>
+<div class="math-row">b = R<sub>v</sub>(g<sub>base</sub>), &nbsp; s = ∇<sub>φᵥ</sub> ℒ<sub>GS</sub></div>
+<div class="math-row">s̃ = s − δ <span class="fraction"><span>⟨s, b⟩</span><span>‖b‖<sub>2</sub>²</span></span> b</div>
+<div class="math-row">c<sub>raw</sub> = λ<sub>GS</sub> q̄<sub>GS</sub> s̃</div>
+<div class="math-row">ĉ<sub>GS</sub> = c<sub>raw</sub> min<span class="math-paren">(</span>1, <span class="fraction"><span>ρ<sub>g</sub> ‖b‖<sub>2</sub></span><span>‖c<sub>raw</sub>‖<sub>2</sub> + ε</span></span><span class="math-paren">)</span></div>
+<div class="math-row math-final">g<sub>VM</sub> = g<sub>base</sub> + E<sub>v</sub>(ĉ<sub>GS</sub>)</div>
+</div>`,note:'At each local step, δ = 1 when ⟨s, b⟩ &lt; 0 and cos(s, b) &lt; τ<sub>c</sub>; otherwise δ = 0. R<sub>v</sub> selects perception coordinates and E<sub>v</sub> zero-extends them. The local validity score q̄<sub>GS</sub> scales eligible supervision, while ρ<sub>g</sub> bounds its norm. The correction is zero when b = 0 or no GS view is eligible.'},
     {title:'One adapter update per client',description:'Each client sends its LoRA update and sample count. The server applies sample-weighted FedAvg and returns the global adapter for the next round; trajectories and visual assets stay local.',equation:'Δ<sub>t</sub> = ∑<sub>i</sub> (n<sub>i</sub> / ∑<sub>j</sub> n<sub>j</sub>) Δ<sub>i,t</sub>',note:'Different local visual sources share the same adapter format and server aggregation rule.'}
   ];
   // Coordinates use the original 960 × 449.01237 viewBox, including its arrows.
@@ -61,6 +68,7 @@
     const stage=stages[index],detail=details[index];
     panel.style.setProperty('--stage-color',stage.color);
     document.getElementById('method-detail').style.setProperty('--stage-color',stage.color);
+    document.getElementById('method-detail').dataset.stage=String(index);
     panel.dataset.stage=String(index);panel.dataset.pinned=String(pinned);
     buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
     overlay.querySelectorAll('.flow-stage').forEach((g,i)=>g.classList.toggle('active',i===index));
@@ -70,7 +78,7 @@
     document.getElementById('step-title').textContent=detail.title;
     document.getElementById('overview-description').textContent=detail.description;
     document.getElementById('step-equation').innerHTML=detail.equation;
-    document.getElementById('step-note').textContent=detail.note;
+    document.getElementById('step-note').innerHTML=detail.note;
     frame();updateControl();
     if(manual&&!reduced.matches){
       focusRing.getAnimations().forEach(a=>a.cancel());
