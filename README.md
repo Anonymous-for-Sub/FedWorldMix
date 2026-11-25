@@ -9,7 +9,7 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-4d6f8c.svg)](code/pyproject.toml)
 [![Project page](https://img.shields.io/badge/Project-Website-b30064.svg)](https://anonymous-for-sub.github.io/FedWorldMix/)
 
-[**Paper**](https://anonymous-for-sub.github.io/FedWorldMix/assets/papers/FedVista.pdf) · [**Supplement**](https://anonymous-for-sub.github.io/FedWorldMix/assets/papers/FedVista_supplement.pdf) · [**Interactive overview & videos**](https://anonymous-for-sub.github.io/FedWorldMix/#method)
+[**Paper**](https://anonymous-for-sub.github.io/FedWorldMix/assets/papers/FedVista.pdf) · [**Supplement**](https://anonymous-for-sub.github.io/FedWorldMix/assets/papers/FedVista_supplement.pdf) · [**Animated paper overview & PiPER video**](https://anonymous-for-sub.github.io/FedWorldMix/#method)
 
 </div>
 
@@ -93,7 +93,7 @@ code/
   tests/             CPU tests for mixing, aggregation and statistics
   hpt_tests/         HPT tensor tests (requires PyTorch)
   tools/             Training and rollout entrypoints
-docs/                Static project website, native overview and recorded videos
+docs/                Static project website, native paper figures and the PiPER video
 scripts/             Website integrity checks
 ```
 

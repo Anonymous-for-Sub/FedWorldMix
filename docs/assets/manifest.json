@@ -2,79 +2,82 @@
   "project": "FedVista",
   "assets": [
     {
+      "path": "assets/figures/ablations.svg",
+      "bytes": 61306,
+      "sha256": "20b013fd71c56ebf7c56d3e869baddb178b969c0022dd58a9229ca96853f690e"
+    },
+    {
+      "path": "assets/figures/cameras.svg",
+      "bytes": 70086,
+      "sha256": "f404282ed0456d8fca6061dad647bfe53663a277e6edafddea38d412fbaf7fd4"
+    },
+    {
+      "path": "assets/figures/fidelity.svg",
+      "bytes": 78888,
+      "sha256": "78db0c7672fe80424bea64af4127436cb209d2dc6077a7e85e7658fd42af79b3"
+    },
+    {
+      "path": "assets/figures/overview.svg",
+      "bytes": 505085,
+      "sha256": "1e32ec4d19418947586804331a5e9c0e631c3f852fd239f4b5f814cca3cdeb78"
+    },
+    {
+      "path": "assets/figures/replica.svg",
+      "bytes": 123380,
+      "sha256": "54d443d8e5755dfeb03a3dd132738728904b88b8fa420266ec47582b256e1e40"
+    },
+    {
+      "path": "assets/figures/retention.svg",
+      "bytes": 53667,
+      "sha256": "5ee6f8adaf90e263856aaddac5437f22b67c623e6c5e5db6490721bc955f74d4"
+    },
+    {
+      "path": "assets/figures/robosplat.svg",
+      "bytes": 113181,
+      "sha256": "53cdc2509096b1bff8577070fc5141aff9822517e5225d030bec85a89464c455"
+    },
+    {
+      "path": "assets/figures/robotwin.svg",
+      "bytes": 114772,
+      "sha256": "6f661be60000936477fb63c5a3b77fd653faa81a973f6a8e7e22e72320814807"
+    },
+    {
+      "path": "assets/figures/rounds.svg",
+      "bytes": 62004,
+      "sha256": "3252b6df4004329e6992dea8c23307069e438739d6a6ca491186488849d28b63"
+    },
+    {
+      "path": "assets/figures/training.svg",
+      "bytes": 57939,
+      "sha256": "851eac54a099cfd54b008bd9b2739420f7eed5a44ba44e6f4992402490825acc"
+    },
+    {
       "path": "assets/images/favicon.svg",
       "bytes": 265,
       "sha256": "39380ae391d9fd9fe068c88f4812e5eac7e2a2a9ccce0c74df6464e864982bb7"
     },
     {
       "path": "assets/images/overview.png",
-      "bytes": 62391,
-      "sha256": "967ba67c4985299485edbb6767705c96179f4577b516328f05cec4038123aae7"
+      "bytes": 353541,
+      "sha256": "ad7209f340e3218ae01d45e26231c8c69670a8e9e5439fb1a0385e4a43676d86"
     },
     {
       "path": "assets/images/overview.svg",
-      "bytes": 6847,
-      "sha256": "2c44bcda28664015038815911f909d6ff8e0cd8378eacf6a548fc90abe6d3cab"
-    },
-    {
-      "path": "assets/media/01_libero_mixed_comparison.jpg",
-      "bytes": 107265,
-      "sha256": "89303fa39cfd4de6e145237a7856784ed7286fc98cc6347b43878cd097cdf5d8"
-    },
-    {
-      "path": "assets/media/01_libero_mixed_comparison.mp4",
-      "bytes": 1703014,
-      "sha256": "592b1155b165705d17dab98859db8c9d1ec7092f0a6a85c81694039c445c6718",
-      "width": 1280,
-      "height": 720
+      "bytes": 505085,
+      "sha256": "1e32ec4d19418947586804331a5e9c0e631c3f852fd239f4b5f814cca3cdeb78"
     },
     {
       "path": "assets/media/02_piper_real_and_gs.jpg",
-      "bytes": 44151,
-      "sha256": "211a72709fc37c2aa58cef39e4d633f2d4725c18712400153832c789def7c93d"
+      "bytes": 67058,
+      "sha256": "a64b3048712736fdb462932ce4299ad6a26ef9dfff57be9d97e548bb7cc53c61"
     },
     {
       "path": "assets/media/02_piper_real_and_gs.mp4",
-      "bytes": 760710,
-      "sha256": "4b71437ef375c88c87c9a8412bf2d65c4d8c0c725901c520032263b3493d872a",
-      "width": 1280,
-      "height": 720
-    },
-    {
-      "path": "assets/media/03_robotwin_truth_and_gs.jpg",
-      "bytes": 44874,
-      "sha256": "258ff626bd391e4d864004136a58ea9e2f7c61ae2081fec1a4eedc2c1da4a00d"
-    },
-    {
-      "path": "assets/media/03_robotwin_truth_and_gs.mp4",
-      "bytes": 749286,
-      "sha256": "cec2335bdc3bfe82174aca1e5473e61133c25026379b55380a0a98ba48cf6728",
-      "width": 1280,
-      "height": 720
-    },
-    {
-      "path": "assets/media/04_replica8_go2_and_g1.jpg",
-      "bytes": 31124,
-      "sha256": "499754679ed7da4df3f3b3429b2468663015a7a924f2a966cf8cb95448fe92c1"
-    },
-    {
-      "path": "assets/media/04_replica8_go2_and_g1.mp4",
-      "bytes": 2752455,
-      "sha256": "a4a4d51ac5c14a17a70a80a178f10e93fb6a3bf8ae014cbc41d66b75090c2a2c",
-      "width": 1280,
-      "height": 360
-    },
-    {
-      "path": "assets/media/05_robosplat_visual_worlds.jpg",
-      "bytes": 67794,
-      "sha256": "01f400168366a752ff67bdf12fae0aa3a22a23830c6084af2983eea90b8cd3fe"
-    },
-    {
-      "path": "assets/media/05_robosplat_visual_worlds.mp4",
-      "bytes": 1663324,
-      "sha256": "8323235bc46d84798975785b72fbb034df4f13807d8af57463d2c7a33e896ee2",
-      "width": 1280,
-      "height": 720
+      "bytes": 1183542,
+      "sha256": "ef95d218a6c0ad9208fb532e88f408e804e53980e4361d2fb204d0061ce3b0df",
+      "width": 900,
+      "height": 720,
+      "duration_seconds": 15.52
     },
     {
       "path": "assets/papers/FedVista.pdf",

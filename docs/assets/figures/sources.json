@@ -1,0 +1,142 @@
+[
+  {
+    "name": "overview",
+    "source": "last-update.pdf",
+    "source_sha256": "db24d56b7bb857b622fb8d05e2db76990a18f9313ad824b600dae4f9b1e0a10b",
+    "viewbox": [
+      0.0,
+      0.0,
+      960.0,
+      449.0123596191406
+    ],
+    "vector_drawings": 146,
+    "observation_images": 11,
+    "glyphs": 745
+  },
+  {
+    "name": "retention",
+    "source": "plots/F10_ood_retention.pdf",
+    "source_sha256": "ddfce58a8c5b0e8d43a85f53125e29b9a1ed9519b6de5dc5197d76701dd4bc72",
+    "viewbox": [
+      0.0,
+      0.0,
+      169.1999969482422,
+      146.16000366210938
+    ],
+    "vector_drawings": 24,
+    "observation_images": 0,
+    "glyphs": 75
+  },
+  {
+    "name": "rounds",
+    "source": "plots/F03_multiround_ood.pdf",
+    "source_sha256": "57fc51a1692b6533ca20ac36d0ec6bede1427eee68756391752d03d0b1d1612b",
+    "viewbox": [
+      0.0,
+      0.0,
+      169.1999969482422,
+      146.16000366210938
+    ],
+    "vector_drawings": 53,
+    "observation_images": 0,
+    "glyphs": 74
+  },
+  {
+    "name": "ablations",
+    "source": "plots/F09_ablation_gains.pdf",
+    "source_sha256": "b1064e676b7050d996e30982af8e83b46eb4c5ab7e2984ef22cc0ccceded4c2b",
+    "viewbox": [
+      0.0,
+      0.0,
+      169.1999969482422,
+      146.16000366210938
+    ],
+    "vector_drawings": 26,
+    "observation_images": 0,
+    "glyphs": 138
+  },
+  {
+    "name": "training",
+    "source": "plots/F04_vistamix_local_training.pdf",
+    "source_sha256": "dd7b7959819aeaaad3173b59bc68e3577bf367d578e30965ef6670a3009f6054",
+    "viewbox": [
+      0.0,
+      0.0,
+      169.1999969482422,
+      146.16000366210938
+    ],
+    "vector_drawings": 30,
+    "observation_images": 0,
+    "glyphs": 111
+  },
+  {
+    "name": "fidelity",
+    "source": "plots/F05_task_roi_fidelity.pdf",
+    "source_sha256": "b1c980f035662d0e0cffd9f0e64ed74ef4b489de5d7f0cf40e61c4049e99621e",
+    "viewbox": [
+      0.0,
+      0.0,
+      169.1999969482422,
+      146.16000366210938
+    ],
+    "vector_drawings": 37,
+    "observation_images": 0,
+    "glyphs": 87
+  },
+  {
+    "name": "cameras",
+    "source": "plots/F06_robotwin_camera_coverage.pdf",
+    "source_sha256": "3bba7ad33a8e79118c4ae7262829ff490e0f9bd2bfdade8b07580a46855607cc",
+    "viewbox": [
+      0.0,
+      0.0,
+      158.65020751953125,
+      121.51636505126953
+    ],
+    "vector_drawings": 20,
+    "observation_images": 0,
+    "glyphs": 142
+  },
+  {
+    "name": "replica",
+    "source": "qualitative/Q01_replica8_go2_g1.pdf",
+    "source_sha256": "2505bb780c33c2d85713ef0958bd97849d4935903dad7b1374894fa40b465095",
+    "viewbox": [
+      0.0,
+      0.0,
+      515.52001953125,
+      99.36000061035156
+    ],
+    "vector_drawings": 31,
+    "observation_images": 14,
+    "glyphs": 47
+  },
+  {
+    "name": "robosplat",
+    "source": "qualitative/Q02_robosplat_visual_worlds.pdf",
+    "source_sha256": "fb033942f045233b49484e84e1e5a0b59339a3560edd8d29d23cde45f4121b2d",
+    "viewbox": [
+      0.0,
+      0.0,
+      252.0,
+      164.16000366210938
+    ],
+    "vector_drawings": 13,
+    "observation_images": 6,
+    "glyphs": 50
+  },
+  {
+    "name": "robotwin",
+    "source": "qualitative/Q08_robotwin_camera_ladder.pdf",
+    "source_sha256": "9f46e4c985fafe9f4e20fb2ba86b747e49d42791ebdfe64f909c6869da85e42b",
+    "viewbox": [
+      0.0,
+      0.0,
+      252.0,
+      174.24000549316406
+    ],
+    "vector_drawings": 13,
+    "observation_images": 6,
+    "glyphs": 104
+  }
+]

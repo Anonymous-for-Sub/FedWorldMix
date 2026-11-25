@@ -1,17 +1,18 @@
 # Research assets
 
-The software license covers the page implementation. It does not grant a new license to the paper PDFs, recorded videos, dataset-derived imagery, model weights or third-party marks.
+The software license covers the page implementation. Paper PDFs, recorded observations and dataset-derived imagery retain their applicable research-asset terms.
 
 | Path | Content and source |
 |---|---|
-| `papers/FedVista.pdf` | Anonymous main manuscript. |
-| `papers/FedVista_supplement.pdf` | Original anonymous supplementary PDF, preserved unchanged. |
-| `media/01_libero_mixed_comparison.*` | Existing matched LIBERO task 5 recordings, mixed shift, seed 1087. All 20 initial states are retained for Frozen and VistaMix. |
-| `media/02_piper_real_and_gs.*` | Existing real PiPER observations and corresponding GS renders. |
-| `media/03_robotwin_truth_and_gs.*` | Existing RoboTwin reference and component-3DGS observations. |
-| `media/04_replica8_go2_and_g1.*` | Existing Go2 and G1 source-controller montage in eight Replica reconstructions; each scene is normalized to six seconds. |
-| `media/05_robosplat_visual_worlds.*` | Existing RoboSplat demonstration under four visual conditions. |
-| `images/overview.svg`, `images/overview.png` | Static exports of the website's native overview. |
-| `images/favicon.svg` | FedVista website icon. |
+| `papers/FedVista.pdf` | Anonymous main manuscript, unchanged. |
+| `papers/FedVista_supplement.pdf` | Original anonymous supplementary PDF, unchanged. |
+| `media/02_piper_real_and_gs.*` | Original PiPER Real/GS recording. The original head and external camera pairs are stacked without the former outer white canvas. 900 × 720, full 15.52-second duration and original 60 fps. |
+| `figures/overview.svg` | Native reconstruction of `last-update.pdf`, the method figure used in the paper. Original vector geometry, glyph outlines and observation patches are retained. |
+| `figures/*.svg` | Native reconstructions of the paper's experiment and visual-world figures. Coordinates, labels, curves and measurements are unchanged. |
+| `figures/sources.json` | Source figure names, hashes and vector-element inventory. |
+| `images/overview.svg`, `images/overview.png` | Static overview previews for the README and link sharing. |
+| `images/favicon.svg` | FedVista icon. |
 
-The videos are presentation exports of existing recordings. Dataset and model terms remain with their respective providers. Source comparison and embodiment-coverage clips illustrate the visual assets; the LIBERO recording is the paired policy comparison.
+The browser renders the figures as inline SVG elements. CSS variables change vector colors; the Paper colors control restores the original palette. Photographic observations retain their original pixels. Animated overlays follow the method figure's existing paths and do not alter the underlying figure.
+
+Regenerate the SVGs with `scripts/build_paper_figures.py --source /path/to/paper/figures` (PyMuPDF required). The source path is an input only and is not embedded in released files. The result panels preserve their original protocol distinctions: three-task reference outcomes, five-round progress, development-stage variants, and local optimization traces.

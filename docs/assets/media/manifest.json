@@ -1,0 +1,13 @@
+{
+  "project": "FedVista",
+  "assets": [
+    {
+      "file": "02_piper_real_and_gs.mp4",
+      "poster": "02_piper_real_and_gs.jpg",
+      "width": 900,
+      "height": 720,
+      "duration_seconds": 15.52,
+      "title": "PiPER: real observations and GS renders"
+    }
+  ]
+}
