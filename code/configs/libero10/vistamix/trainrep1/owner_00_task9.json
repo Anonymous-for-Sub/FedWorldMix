@@ -1,0 +1,169 @@
+{
+  "schema": "fedsplat.smolvla_local_update_config.isolated_libero10_v1",
+  "evidence_scope": "paper_candidate_libero10_matched_sources",
+  "checkpoint_path": "./data/smolvla_libero",
+  "dataset_path": "./data/libero10/task9/canonical",
+  "repo_id": "local/fedworldmix-isolated-task9-canonical-12demo",
+  "client_id": "full_safemix__trainrep1__owner_00_task9",
+  "rename_map": {
+    "observation.images.wrist_image": "observation.images.image2"
+  },
+  "train_episodes": [
+    0,
+    3,
+    6,
+    10
+  ],
+  "validation_episodes": [
+    4
+  ],
+  "samples_per_episode": 24,
+  "train_samples_per_episode": 24,
+  "validation_samples_per_episode": 16,
+  "batch_size": 4,
+  "evaluation_batch_size": 4,
+  "resample_each_step": true,
+  "expected_task_index": 0,
+  "target_modules": [
+    "model.state_proj",
+    "model.action_in_proj",
+    "model.action_out_proj",
+    "model.action_time_mlp_in",
+    "model.action_time_mlp_out",
+    "model.vlm_with_expert.vlm.model.connector.modality_projection.proj"
+  ],
+  "target_module_patterns": [
+    "model.vlm_with_expert.vlm.model.vision_model.encoder.layers.10.*",
+    "model.vlm_with_expert.vlm.model.vision_model.encoder.layers.11.*",
+    "model.vlm_with_expert.lm_expert.layers.30.*",
+    "model.vlm_with_expert.lm_expert.layers.31.*"
+  ],
+  "rank": 8,
+  "alpha": 16.0,
+  "steps": 128,
+  "learning_rate": 2e-05,
+  "gradient_mode": "augmentation_portfolio",
+  "sharpness_mode": "none",
+  "synthetic_gradient_scope": "perception",
+  "synthetic_objective": "action_bc",
+  "paired_teacher_mode": "initial_global",
+  "paired_teacher_reference": "pretrained_base",
+  "paired_action_consistency_mode": "flow_velocity",
+  "policy_anchor_mode": "none",
+  "representation_anchor_mode": "none",
+  "paired_action_consistency_weight": 1.0,
+  "paired_feature_consistency_weight": 0.5,
+  "paired_synthetic_bc_weight": 1.0,
+  "paired_canonical_action_identity_weight": 2.0,
+  "paired_canonical_feature_identity_weight": 0.5,
+  "paired_distillation_gate": {
+    "minimum_train_pair_gain": 0.0,
+    "minimum_anchor_pair_gain": 0.0,
+    "real_validation_tolerance": 0.01
+  },
+  "perception_module_patterns": [
+    "model.vlm_with_expert.vlm.model.vision_model.*",
+    "model.vlm_with_expert.vlm.model.connector.*"
+  ],
+  "local_trainable_module_patterns": [
+    "model.vlm_with_expert.vlm.model.vision_model.*",
+    "model.vlm_with_expert.vlm.model.connector.*"
+  ],
+  "synthetic_weight": 1.0,
+  "use_synthetic_quality_weight": true,
+  "projection_cosine_threshold": -0.02,
+  "max_auxiliary_to_real_norm": 1.0,
+  "synthetic_source": {
+    "type": "lerobot_dataset",
+    "dataset_path": "./data/libero10/task9/component_gs",
+    "repo_id": "local/fedworldmix-isolated-task9-component-gs-12demo",
+    "episode_ids": [
+      0,
+      3,
+      6,
+      10
+    ],
+    "candidate_episode_ids": [
+      0,
+      3,
+      6,
+      10
+    ],
+    "anchor_episode_ids": [],
+    "samples_per_episode": 24,
+    "provenance": "exact_demo_model_state_aligned_per_demo_component_gaussians_pose_oracle_development",
+    "quality_manifest": "./data/libero10/task9/component_gs/quality_manifest.json",
+    "selection": {
+      "sampling_mode": "uniform",
+      "samples_per_episode": 24,
+      "minimum_render_coverage": 0.8
+    }
+  },
+  "proximal_mu": 0.0,
+  "initial_adapter_update": null,
+  "update_contract": "combined",
+  "staleness": 0,
+  "seed": 15900,
+  "device": "cuda",
+  "owner_local_split": {
+    "schema": "fedsplat.owner_local_source_split.v1",
+    "source_train_episodes": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+    ],
+    "source_validation_episodes": [
+      4,
+      9
+    ],
+    "source_validation_used_for_training": [],
+    "source_train_reserved_for_local_validation": [],
+    "globally_disjoint_owner_partition": true
+  },
+  "local_budget_policy": {
+    "schema": "fedworldmix.fixed_matched_owner_steps.v1",
+    "steps": 128,
+    "samples_per_episode": 24,
+    "same_across_methods": true
+  },
+  "record_marginal_utility_episodes": false,
+  "marginal_utility_canonical_penalty": 1.0,
+  "data_strategy": {
+    "schema": "fedsplat.owner_data_strategy_binding.v1",
+    "strategy": "full_safemix",
+    "source_owner_id": "owner_00_task9",
+    "same_owner_split": true,
+    "same_training_seed": true,
+    "same_lora_scope": true,
+    "same_optimizer_steps": true,
+    "candidate_family": "isolated_libero10_matched_sources",
+    "gs_ratio": 0.25,
+    "equal_candidate_training_budget": true,
+    "reference_gs_ratio": 0.25
+  },
+  "augmentation_portfolio": {
+    "schema": "fedsplat.augmentation_portfolio.v1",
+    "gs_ratio": 0.25,
+    "equal_auxiliary_budget": true,
+    "two_d_source": {
+      "type": "visual_proxy",
+      "provenance": "proxy_visual_augmentation",
+      "contrast": 1.1,
+      "brightness": 0.06,
+      "horizontal_shift_px": 4,
+      "vertical_shift_px": 0
+    }
+  },
+  "training_seed_group": {
+    "replicate": 1,
+    "offset": 10000,
+    "effective_seed": 15900
+  }
+}
