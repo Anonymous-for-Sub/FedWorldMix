@@ -37,18 +37,18 @@
   const table=document.getElementById('full-results');
   rows.forEach(row=>{const tr=document.createElement('tr');const name=document.createElement('th');name.scope='row';name.textContent=row.name;tr.append(name);['pooled','appearance','viewpoint','mixed','worst','canonical'].forEach(k=>{const td=document.createElement('td');td.textContent=row[k].toFixed(2);tr.append(td);});table.append(tr);});
   const worlds={
-    piper:{file:'02_piper_real_and_gs',title:'Real observations and GS renders',description:'Synchronized head and external camera observations show the real PiPER trajectory alongside its Gaussian Splatting representation.',timing:'Recorded source comparison · original playback timing'},
-    robotwin:{file:'03_robotwin_truth_and_gs',title:'Consistent structure across camera views',description:'Near and far cameras reveal corresponding reference and component-3DGS observations of a RoboTwin trajectory.',timing:'Recorded source comparison · original playback timing'},
-    replica:{file:'04_replica8_go2_and_g1',title:'Two embodiments across eight reconstructed scenes',description:'Go2 and G1 states are rendered across all eight Replica reconstructions. SUCCESS labels describe the source controller episodes in this montage.',timing:'Source coverage montage · each scene normalized to 6 seconds'},
-    robosplat:{file:'05_robosplat_visual_worlds',title:'One demonstration, four visual conditions',description:'The same RoboSplat demonstration appears under canonical, camera, lighting and combined visual conditions, illustrating complementary forms of visual variation.',timing:'Recorded visual-source comparison · original playback timing'}
+    piper:{file:'02_piper_real_and_gs',width:1280,height:720,title:'PiPER: real observations and GS renders',description:'Synchronized head and external camera observations show the real PiPER trajectory alongside its Gaussian Splatting representation.',timing:'Recorded source comparison · original playback timing'},
+    robotwin:{file:'03_robotwin_truth_and_gs',width:1280,height:720,title:'RoboTwin: reference and component-3DGS views',description:'Near and far cameras reveal corresponding reference and component-3DGS observations of a RoboTwin trajectory.',timing:'Recorded source comparison · original playback timing'},
+    replica:{file:'04_replica8_go2_and_g1',width:1280,height:360,title:'Replica-8: Go2 and G1 across eight scenes',description:'Go2 and G1 states are rendered across all eight Replica reconstructions. SUCCESS labels describe the source controller episodes in this montage.',timing:'Source coverage montage · each scene normalized to 6 seconds'},
+    robosplat:{file:'05_robosplat_visual_worlds',width:1280,height:720,title:'RoboSplat: four visual conditions',description:'The same RoboSplat demonstration appears under canonical, camera, lighting and combined visual conditions, illustrating complementary forms of visual variation.',timing:'Recorded visual-source comparison · original playback timing'}
   };
   document.querySelectorAll('[data-world]').forEach(b=>b.addEventListener('click',()=>{
     const key=b.dataset.world,w=worlds[key];document.querySelectorAll('[data-world]').forEach(x=>{const on=x===b;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1;});
     document.getElementById('world-panel').setAttribute('aria-labelledby','world-'+key);
-    const video=document.getElementById('world-video');video.pause();video.poster='assets/media/'+w.file+'.jpg';video.querySelector('source').src='assets/media/'+w.file+'.mp4';video.setAttribute('aria-label',w.title);video.load();
+    const video=document.getElementById('world-video');video.pause();video.width=w.width;video.height=w.height;video.style.aspectRatio=w.width+' / '+w.height;video.poster='assets/media/'+w.file+'.jpg';video.querySelector('source').src='assets/media/'+w.file+'.mp4';video.setAttribute('aria-label',w.title);video.load();
     document.getElementById('world-title').textContent=w.title;document.getElementById('world-description').textContent=w.description;document.getElementById('world-timing').textContent=w.timing;
   }));
-  document.querySelectorAll('[role=tablist]').forEach(list=>list.addEventListener('keydown',e=>{
+  document.querySelectorAll('[role=tablist]:not(.overview-steps)').forEach(list=>list.addEventListener('keydown',e=>{
     const keys=['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'];if(!keys.includes(e.key))return;
     const buttons=[...list.querySelectorAll('[role=tab]')];const current=buttons.indexOf(document.activeElement);if(current<0)return;e.preventDefault();
     const next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(current+(['ArrowRight','ArrowDown'].includes(e.key)?1:-1)+buttons.length)%buttons.length;

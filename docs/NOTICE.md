@@ -1,5 +1,7 @@
 # Website attribution
 
-This project page adapts the layout and CSS of [Long-WAM](https://nvlabs.github.io/LongLive/Long-WAM/), from [NVlabs/LongLive](https://github.com/NVlabs/LongLive), distributed under Apache 2.0. The license is included in `licenses/LongLive-Apache-2.0.txt`.
+The initial page layout was adapted from [Long-WAM](https://nvlabs.github.io/LongLive/Long-WAM/), part of [NVlabs/LongLive](https://github.com/NVlabs/LongLive), under Apache-2.0. The license is retained in [licenses/LongLive-Apache-2.0.txt](licenses/LongLive-Apache-2.0.txt).
 
-Modified for FedVista: paper palette, project content, figures, videos, navigation, result explorer, accessible interactions and offline assets. Original Long-WAM research text, author lists, result data and videos are not included in this page.
+The FedVista version replaces the project content, stylesheet, result interactions and media. Its overview is a native SVG with desktop and mobile layouts, step controls and an animated update flow. Original software changes are covered by the repository's Apache-2.0 license.
+
+Research asset provenance is listed in [assets/README.md](assets/README.md).

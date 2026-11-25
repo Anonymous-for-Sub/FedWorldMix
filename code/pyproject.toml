@@ -4,9 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fedvista"
-version = "0.2.0"
+version = "0.2.1"
 description = "FedVista and VistaMix: federated VLA learning from diverse visual worlds."
 requires-python = ">=3.10"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "FedVista contributors"}]
+keywords = ["federated-learning", "vision-language-action", "robot-learning"]
 dependencies = [
   "h5py",
   "imageio",
@@ -15,6 +19,11 @@ dependencies = [
   "opencv-python-headless",
   "pillow",
 ]
+
+[project.urls]
+Homepage = "https://anonymous-for-sub.github.io/FedWorldMix/"
+Repository = "https://github.com/Anonymous-for-Sub/FedWorldMix"
+Issues = "https://github.com/Anonymous-for-Sub/FedWorldMix/issues"
 
 [project.optional-dependencies]
 test = ["pytest>=7"]

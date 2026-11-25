@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying FedVista manuscript when using this software."
+type: software
+title: "FedVista: Robust Federated VLA Learning from Diverse Visual Worlds"
+authors:
+  - name: "Anonymous Authors"
+version: 0.2.1
+license: Apache-2.0
+repository-code: "https://github.com/Anonymous-for-Sub/FedWorldMix"
+url: "https://anonymous-for-sub.github.io/FedWorldMix/"
+keywords:
+  - federated learning
+  - vision-language-action
+  - robot learning
+  - Gaussian Splatting

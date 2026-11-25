@@ -1,48 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>FedVista — Robust Federated VLA Learning from Diverse Visual Worlds</title>
-<meta name="description" content="FedVista combines diverse local visual worlds with VistaMix to improve federated vision-language-action learning. Anonymous project page, code, paper, and videos.">
-<meta name="theme-color" content="#142b40">
-<meta property="og:title" content="FedVista: Robust Federated VLA Learning from Diverse Visual Worlds">
-<meta property="og:description" content="Diverse visual worlds. Protected local updates. Stronger federated VLA robustness.">
-<meta property="og:image" content="https://anonymous-for-sub.github.io/FedWorldMix/assets/images/method.webp">
-<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/long-wam.css"><link rel="stylesheet" href="assets/css/fedvista.css">
-<script src="assets/js/site.js" defer></script>
-</head>
+<meta content="FedVista combines diverse local visual worlds with VistaMix to improve federated vision-language-action learning. Anonymous project page, code, paper, and videos." name="description"/>
+<meta content="#142b40" name="theme-color"/>
+<meta content="FedVista: Robust Federated VLA Learning from Diverse Visual Worlds" property="og:title"/>
+<meta content="Diverse visual worlds. Protected local updates. Stronger federated VLA robustness." property="og:description"/>
+<meta content="https://anonymous-for-sub.github.io/FedWorldMix/assets/images/overview.png" property="og:image"/>
+<link href="assets/images/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/fedvista.css" rel="stylesheet"/>
+<script defer="" src="assets/js/site.js"></script>
+<script defer="" src="assets/js/overview.js"></script></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="nav is-on" aria-label="Main navigation">
+<nav aria-label="Main navigation" class="nav is-on">
 <a class="nav-brand" href="#paper">FedVista<span class="brand-dot">.</span></a>
 <div class="nav-links"><a href="#method">Method</a><a href="#results">Results</a><a href="#worlds">Visual worlds</a><a href="#demos">Demos</a><a href="#resources">Resources</a></div>
 <a class="nav-film" href="assets/papers/FedVista.pdf">Paper ↗</a>
 </nav>
-<header id="paper" class="paper">
-<div class="hero-grid" aria-hidden="true"></div>
+<header class="paper" id="paper">
+
 <div class="paper-inner">
 <p class="eyebrow">Federated learning · Vision–Language–Action</p>
-<h1 class="title"><span class="brand">FedVista</span><span class="subtitle">Robust Federated VLA Learning<br>from Diverse Visual Worlds</span></h1>
+<h1 class="title"><span class="brand">FedVista</span><span class="subtitle">Robust Federated VLA Learning<br/>from Diverse Visual Worlds</span></h1>
 <p class="authors">Anonymous Authors</p>
-<p class="hero-summary">Different cameras. Different scenes. One shared policy.<br><strong>Combine local visual evidence with care.</strong></p>
+<p class="hero-summary">Federated adaptation with real observations, 2D augmentations and Gaussian Splatting views. VistaMix controls their contribution to each local policy update.</p>
 <div class="links">
 <a class="btn primary" href="assets/papers/FedVista.pdf"><span aria-hidden="true">↗</span> Read the paper</a>
 <a class="btn" href="https://github.com/Anonymous-for-Sub/FedWorldMix">Code <span aria-hidden="true">↗</span></a>
 <a class="btn" href="assets/papers/FedVista_supplement.pdf">Supplement</a>
 <a class="btn" href="#demos">Watch demos <span aria-hidden="true">↓</span></a>
 </div>
-<div class="world-tags" aria-label="Three visual sources"><span><i class="real-dot"></i>Real observations</span><b>+</b><span><i class="two-d-dot"></i>2D augmentations</span><b>+</b><span><i class="gs-dot"></i>Gaussian Splatting</span></div>
+
 </div>
 </header>
 <main id="main">
-<section id="highlights" class="section first-section">
+<section class="section first-section" id="highlights">
 <div class="wrap">
-<div class="hero-media">
-<video controls muted playsinline loop preload="metadata" poster="assets/media/03_robotwin_truth_and_gs.jpg" aria-label="RoboTwin reference views and corresponding component 3DGS renders"><source src="assets/media/03_robotwin_truth_and_gs.mp4" type="video/mp4"></video>
-<div class="media-strip"><span>LOCAL VISUAL WORLDS</span><p>Reference observations and component 3DGS, across near and far cameras.</p><a href="#worlds">Explore the sources ↓</a></div>
-</div>
-<p class="tldr"><span class="tag">TL;DR</span>FedVista learns from diverse visual sources within each client. <em>VistaMix</em> protects a real-and-2D base update while incorporating valid geometric supervision. Clients share LoRA updates through standard FedAvg, keeping raw robot trajectories local.</p>
+
+
 <div class="stats">
 <div class="stat"><b>46.00<small>%</small></b><span>Pooled OOD success</span><em>Across all ten LIBERO-10 tasks</em></div>
 <div class="stat"><b>+3.28<small>pp</small></b><span>Over NaiveJoint</span><em>Equal budget · 95% CI [1.06, 5.50]</em></div>
@@ -50,56 +48,59 @@
 <div class="stat"><b>3</b><span>Policy architectures</span><em>SmolVLA · OpenVLA-OFT · HPT</em></div>
 </div>
 </div></section>
-<section id="abstract" class="section"><div class="wrap narrow"><p class="kicker">Abstract</p><p class="abstract">Federated Vision–Language–Action (VLA) adaptation must accommodate heterogeneous visual conditions and local supervision while keeping robot trajectories local. Image-space augmentations provide inexpensive appearance variation, while Gaussian Splatting (GS) adds structured views whose validity depends on scene coverage, camera configuration, and action alignment. Naively combining these sources can introduce unreliable supervision into local updates. We present <strong>FedVista</strong>, a federated VLA adaptation framework built around <strong>VistaMix</strong>, a safeguarded local gradient-composition rule. VistaMix uses real observations and 2D augmentations to form a reference update, incorporating eligible GS supervision as a perception-restricted correction with validity weighting, conflict projection, and norm control. Each client returns standard Low-Rank Adaptation (LoRA) updates for sample-weighted Federated Averaging (FedAvg). Across all ten LIBERO-10 tasks, VistaMix achieves 46.00% pooled out-of-distribution (OOD) success, exceeding equal-budget NaiveJoint by 3.28 percentage points (95% CI [1.06, 5.50]) while retaining 78.17% canonical-domain success. Additional evaluations show client-macro and worst-client improvements and extend the composition rule to OpenVLA-OFT and HPT with different structured visual sources. Controlling auxiliary visual supervision improves federated VLA robustness while preserving standard server-side aggregation.</p></div></section>
-<section id="method" class="section"><div class="wrap">
-<div class="head"><p class="kicker">01 · Method</p><h2>Diverse evidence.<br><em>A protected update.</em></h2><p class="lead">A visual source that helps one task or client may hurt another. VistaMix controls which GS observations contribute and how much they can change the local update.</p></div>
-<div class="vista-pipeline">
-<div class="flow-node real"><span>01 · ANCHOR</span><h3>Real + 2D</h3><p>Original behavior and appearance variation form the base gradient.</p><code>b = g<sub>real</sub> + 0.75 g<sub>2D</sub></code></div>
-<div class="flow-arrow" aria-hidden="true">→</div>
-<div class="flow-node gs"><span>02 · ADMIT</span><h3>Valid GS views</h3><p>Local coverage, visibility and alignment checks identify eligible supervision.</p><code>Perception parameters only</code></div>
-<div class="flow-arrow" aria-hidden="true">→</div>
-<div class="flow-node mix"><span>03 · PROTECT</span><h3>VistaMix</h3><p>Weight, project and cap the GS correction relative to the base update.</p><code>g = b + bounded correction</code></div>
-<div class="flow-arrow" aria-hidden="true">→</div>
-<div class="flow-node fed"><span>04 · AGGREGATE</span><h3>LoRA → FedAvg</h3><p>One adapter update per client. A standard sample-weighted server.</p><code>Raw trajectories stay local</code></div>
+<section class="section" id="abstract"><div class="wrap narrow"><details class="abstract-details"><summary>Abstract</summary><p class="abstract">Federated Vision–Language–Action (VLA) adaptation must accommodate heterogeneous visual conditions and local supervision while keeping robot trajectories local. Image-space augmentations provide inexpensive appearance variation, while Gaussian Splatting (GS) adds structured views whose validity depends on scene coverage, camera configuration, and action alignment. Naively combining these sources can introduce unreliable supervision into local updates. We present <strong>FedVista</strong>, a federated VLA adaptation framework built around <strong>VistaMix</strong>, a safeguarded local gradient-composition rule. VistaMix uses real observations and 2D augmentations to form a reference update, incorporating eligible GS supervision as a perception-restricted correction with validity weighting, conflict projection, and norm control. Each client returns standard Low-Rank Adaptation (LoRA) updates for sample-weighted Federated Averaging (FedAvg). Across all ten LIBERO-10 tasks, VistaMix achieves 46.00% pooled out-of-distribution (OOD) success, exceeding equal-budget NaiveJoint by 3.28 percentage points (95% CI [1.06, 5.50]) while retaining 78.17% canonical-domain success. Additional evaluations show client-macro and worst-client improvements and extend the composition rule to OpenVLA-OFT and HPT with different structured visual sources. Controlling auxiliary visual supervision improves federated VLA robustness while preserving standard server-side aggregation.</p></details></div></section>
+<section class="section" id="method"><div class="wrap">
+<div class="head"><p class="kicker">01</p><h2>Method</h2><p class="lead">VistaMix combines a Real + 2D reference gradient with a validity-weighted GS correction. The correction is restricted to perception parameters, projected when strongly conflicting, and bounded before the local optimizer step.</p></div>
+
+
+
+<div class="overview" data-playing="false" id="overview">
+<div class="overview-toolbar"><div aria-label="Overview steps" class="overview-steps" role="tablist">
+<button aria-controls="overview-description" aria-selected="true" data-overview-step="0" id="overview-tab-0" role="tab" type="button">1. Local sources</button>
+<button aria-controls="overview-description" aria-selected="false" data-overview-step="1" id="overview-tab-1" role="tab" tabindex="-1" type="button">2. VLA adapter</button>
+<button aria-controls="overview-description" aria-selected="false" data-overview-step="2" id="overview-tab-2" role="tab" tabindex="-1" type="button">3. VistaMix</button>
+<button aria-controls="overview-description" aria-selected="false" data-overview-step="3" id="overview-tab-3" role="tab" tabindex="-1" type="button">4. FedAvg</button></div>
+<button aria-pressed="false" class="overview-play" id="overview-play" type="button">Play</button></div>
+<div class="overview-canvas" id="overview-canvas"></div>
+<div aria-labelledby="overview-tab-0" class="overview-description" id="overview-description" role="tabpanel"><span id="overview-step-label">01 / Local sources</span><p id="overview-step-text">Real observations, 2D augmentations and eligible GS views share the source action target. GS admission uses local coverage, validity and alignment checks.</p></div>
+<noscript><img alt="FedVista: local visual sources, perception LoRA, VistaMix gradient protection, and sample-weighted FedAvg." height="450" src="assets/images/overview.svg" width="1160"/></noscript>
 </div>
-<figure class="method-figure"><a href="assets/images/method.webp" target="_blank" rel="noopener" aria-label="Open the full-size FedVista method figure"><img src="assets/images/method.webp" alt="FedVista architecture: real, 2D and component-GS observations feed perception LoRA adapters, VistaMix protects local gradients, and the server aggregates LoRA updates with FedAvg." loading="lazy" width="1728" height="808"></a><figcaption>FedVista overview from the paper. Select the figure to view it at full size.</figcaption></figure>
-<div class="explain-grid"><div><h3>A reliable reference direction</h3><p>Real observations anchor the action target; 2D augmentation adds appearance diversity. GS contributes structured viewpoint and scene variation as a correction to that reference.</p></div><div><h3>Preset weights, adaptive influence</h3><p>The auxiliary coefficients are 0.75 for 2D and 0.25 for GS. Validity weighting and norm capping determine the effective GS contribution at each step.</p></div><div><h3>One common federated interface</h3><p>Clients can use different visual resources while returning the same adapter format. Source composition happens locally, before aggregation.</p></div></div>
-</div></section>
-<section id="results" class="section results-section"><div class="wrap">
-<div class="head"><p class="kicker">02 · Results</p><h2>More robust across<br><em>visual conditions.</em></h2><p class="lead">Under matched training and evaluation budgets, VistaMix improves OOD success over joint source mixing. The gain remains positive in every leave-one-task-out analysis.</p></div>
+<div class="method-notes"><p><strong>Source weights.</strong> The coefficients are 1 for Real, 0.75 for 2D and 0.25 for GS. Validity weighting and norm capping determine the effective GS correction.</p><p><strong>Federated interface.</strong> Each client sends an adapter update and sample count. Raw trajectories and visual assets remain on the client.</p></div></div></section>
+<section class="section results-section" id="results"><div class="wrap">
+<div class="head"><p class="kicker">02</p><h2>LIBERO-10 results</h2><p class="lead">All methods use matched training budgets. VistaMix reaches 46.00% pooled OOD success, a 3.28 percentage-point gain over NaiveJoint; the gain remains positive in all ten leave-one-task-out analyses.</p></div>
 <div class="result-layout"><div class="chart-card">
 <div class="chart-top"><h3>LIBERO-10 success</h3><span>Higher is better · %</span></div>
-<div class="metric-tabs" role="tablist" aria-label="Evaluation condition">
-<button role="tab" id="tab-pooled" aria-controls="result-panel" aria-selected="true" data-metric="pooled">Pooled OOD</button><button role="tab" id="tab-appearance" aria-controls="result-panel" aria-selected="false" data-metric="appearance" tabindex="-1">Appearance</button><button role="tab" id="tab-viewpoint" aria-controls="result-panel" aria-selected="false" data-metric="viewpoint" tabindex="-1">Viewpoint</button><button role="tab" id="tab-mixed" aria-controls="result-panel" aria-selected="false" data-metric="mixed" tabindex="-1">Mixed</button><button role="tab" id="tab-canonical" aria-controls="result-panel" aria-selected="false" data-metric="canonical" tabindex="-1">Canonical</button>
+<div aria-label="Evaluation condition" class="metric-tabs" role="tablist">
+<button aria-controls="result-panel" aria-selected="true" data-metric="pooled" id="tab-pooled" role="tab">Pooled OOD</button><button aria-controls="result-panel" aria-selected="false" data-metric="appearance" id="tab-appearance" role="tab" tabindex="-1">Appearance</button><button aria-controls="result-panel" aria-selected="false" data-metric="viewpoint" id="tab-viewpoint" role="tab" tabindex="-1">Viewpoint</button><button aria-controls="result-panel" aria-selected="false" data-metric="mixed" id="tab-mixed" role="tab" tabindex="-1">Mixed</button><button aria-controls="result-panel" aria-selected="false" data-metric="canonical" id="tab-canonical" role="tab" tabindex="-1">Canonical</button>
 </div>
-<div id="result-panel" role="tabpanel" aria-labelledby="tab-pooled"><div id="result-bars" class="result-bars"></div><div class="bar-axis"><span>0</span><span>50</span><span>100%</span></div></div>
+<div aria-labelledby="tab-pooled" id="result-panel" role="tabpanel"><div class="result-bars" id="result-bars"></div><div class="bar-axis"><span>0</span><span>50</span><span>100%</span></div></div>
 <p class="fine">Ten tasks · 1,800 OOD and 600 canonical episodes per method. Values from the main results table.</p>
-</div><aside class="result-insight"><span class="kicker">VistaMix vs. NaiveJoint</span><div id="gain-number">+3.28<span>pp</span></div><h3 id="gain-title">Pooled OOD improvement</h3><p id="gain-note" aria-live="polite">95% confidence interval [1.06, 5.50]. The larger gains under viewpoint and mixed shifts support geometric variation as a complement to appearance augmentation.</p><a href="assets/papers/FedVista.pdf">Read the full evaluation ↗</a></aside></div>
+</div><aside class="result-insight"><span class="kicker">VistaMix vs. NaiveJoint</span><div id="gain-number">+3.28<span>pp</span></div><h3 id="gain-title">Pooled OOD improvement</h3><p aria-live="polite" id="gain-note">95% confidence interval [1.06, 5.50]. The larger gains under viewpoint and mixed shifts support geometric variation as a complement to appearance augmentation.</p><a href="assets/papers/FedVista.pdf">Read the full evaluation ↗</a></aside></div>
 <details class="results-details"><summary>View the complete LIBERO-10 outcome table</summary><div class="table-scroll"><table><caption>Success rates (%). All adapted variants use FedAvg.</caption><thead><tr><th scope="col">Method</th><th scope="col">Pooled OOD</th><th scope="col">Appearance</th><th scope="col">Viewpoint</th><th scope="col">Mixed</th><th scope="col">Worst shift</th><th scope="col">Canonical</th></tr></thead><tbody id="full-results"></tbody></table></div></details>
-<div class="transfer-band"><div><p class="kicker">Across architectures</p><h3>The same principle,<br>different policy interfaces.</h3></div><div><b>48.89<span>%</span></b><h4>OpenVLA-OFT OOD</h4><p>+6.11 pp over 2D, with GS supervision.</p></div><div><b>63.06<span>%</span></b><h4>HPT on MetaWorld OOD</h4><p>+4.31 pp over NaiveJoint-HPT, with recorded multiview observations.</p></div></div>
+<div class="transfer-band"><div><p class="kicker">Separate backbone evaluations</p><h3>Other policy architectures</h3></div><div><b>48.89<span>%</span></b><h4>OpenVLA-OFT OOD</h4><p>+6.11 pp over 2D, with GS supervision.</p></div><div><b>63.06<span>%</span></b><h4>HPT on MetaWorld OOD</h4><p>+4.31 pp over NaiveJoint-HPT, with recorded multiview observations.</p></div></div>
 <div class="client-line"><strong>Across heterogeneous clients</strong><span>Client-macro success <b>42.86 → 47.28%</b></span><span>Worst-client success <b>29.44 → 38.61%</b></span><small>NaiveJoint → VistaMix · explicit client heterogeneity protocol</small></div>
 </div></section>
-<section id="worlds" class="section"><div class="wrap">
-<div class="head"><p class="kicker">03 · Visual worlds</p><h2>See the sources.<br><em>Understand the variation.</em></h2><p class="lead">Reconstruction, appearance and camera geometry provide different kinds of visual evidence. Explore the recorded source comparisons below.</p></div>
-<div class="world-layout"><div class="world-menu" role="tablist" aria-label="Visual source" aria-orientation="vertical">
-<button role="tab" id="world-piper" aria-controls="world-panel" aria-selected="true" data-world="piper"><span>01</span><div><strong>PiPER</strong><small>Real observations + GS</small></div><b>↗</b></button>
-<button role="tab" id="world-robotwin" aria-controls="world-panel" aria-selected="false" tabindex="-1" data-world="robotwin"><span>02</span><div><strong>RoboTwin</strong><small>Near and far camera views</small></div><b>↗</b></button>
-<button role="tab" id="world-replica" aria-controls="world-panel" aria-selected="false" tabindex="-1" data-world="replica"><span>03</span><div><strong>Replica-8</strong><small>Eight scenes · Go2 and G1</small></div><b>↗</b></button>
-<button role="tab" id="world-robosplat" aria-controls="world-panel" aria-selected="false" tabindex="-1" data-world="robosplat"><span>04</span><div><strong>RoboSplat</strong><small>Four visual conditions</small></div><b>↗</b></button>
-</div><div id="world-panel" class="world-player" role="tabpanel" aria-labelledby="world-piper"><video id="world-video" controls muted playsinline preload="metadata" poster="assets/media/02_piper_real_and_gs.jpg" aria-label="PiPER real observations and GS renders"><source src="assets/media/02_piper_real_and_gs.mp4" type="video/mp4"></video><div class="world-caption"><h3 id="world-title">Real observations and GS renders</h3><p id="world-description">Synchronized head and external camera observations show the real PiPER trajectory alongside its Gaussian Splatting representation.</p><span id="world-timing">Recorded source comparison · original playback timing</span></div></div></div>
+<section class="section" id="worlds"><div class="wrap">
+<div class="head"><p class="kicker">03</p><h2>Visual sources</h2><p class="lead">Recorded observations and reconstructed views from PiPER, RoboTwin, Replica-8 and RoboSplat.</p></div>
+<div class="world-layout"><div aria-label="Visual source" aria-orientation="horizontal" class="world-menu" role="tablist">
+<button aria-controls="world-panel" aria-selected="true" data-world="piper" id="world-piper" role="tab"><span>01</span><div><strong>PiPER</strong><small>Real observations + GS</small></div></button>
+<button aria-controls="world-panel" aria-selected="false" data-world="robotwin" id="world-robotwin" role="tab" tabindex="-1"><span>02</span><div><strong>RoboTwin</strong><small>Near and far camera views</small></div></button>
+<button aria-controls="world-panel" aria-selected="false" data-world="replica" id="world-replica" role="tab" tabindex="-1"><span>03</span><div><strong>Replica-8</strong><small>Eight scenes · Go2 and G1</small></div></button>
+<button aria-controls="world-panel" aria-selected="false" data-world="robosplat" id="world-robosplat" role="tab" tabindex="-1"><span>04</span><div><strong>RoboSplat</strong><small>Four visual conditions</small></div></button>
+</div><div aria-labelledby="world-piper" class="world-player" id="world-panel" role="tabpanel"><video aria-label="PiPER real observations and GS renders" controls="" height="720" id="world-video" muted="" playsinline="" poster="assets/media/02_piper_real_and_gs.jpg" preload="metadata" style="aspect-ratio: 16 / 9" width="1280"><source src="assets/media/02_piper_real_and_gs.mp4" type="video/mp4"/></video><div class="world-caption"><h3 id="world-title">PiPER: real observations and GS renders</h3><p id="world-description">Paired head and external camera observations from the same recorded trajectory.</p><span id="world-timing">Original playback timing</span></div></div></div>
 </div></section>
-<section id="demos" class="section demo-section"><div class="wrap">
-<div class="head"><p class="kicker">04 · Policy comparison</p><h2>A shared task.<br><em>Stronger visual robustness.</em></h2><p class="lead">Frozen and VistaMix under the same mixed visual shift. Every initial state in this recorded batch is shown side by side.</p></div>
-<div class="policy-video"><video controls muted playsinline preload="metadata" poster="assets/media/01_libero_mixed_comparison.jpg" aria-label="Matched LIBERO task 5 rollouts: Frozen and VistaMix across twenty initial states"><source src="assets/media/01_libero_mixed_comparison.mp4" type="video/mp4"></video></div>
-<div class="demo-summary"><div><span>FROZEN</span><b>7<small>/20</small></b></div><div class="demo-arrow" aria-hidden="true">→</div><div class="ours"><span>VISTAMIX</span><b>13<small>/20</small></b></div><p>Successful episodes in this selected batch.<br>LIBERO task 5 · mixed shift · seed 1087.<br><small>Complete paired recordings; batch counts are distinct from the pooled paper results.</small></p></div>
+<section class="section demo-section" id="demos"><div class="wrap">
+<div class="head"><p class="kicker">04</p><h2>Paired policy rollouts</h2><p class="lead">Frozen and VistaMix on LIBERO task 5 under a mixed visual shift. Each side shows the same 20 initial states.</p></div>
+<div class="policy-video"><video aria-label="Matched LIBERO task 5 rollouts: Frozen and VistaMix across twenty initial states" controls="" height="720" muted="" playsinline="" poster="assets/media/01_libero_mixed_comparison.jpg" preload="metadata" style="aspect-ratio: 16 / 9" width="1280"><source src="assets/media/01_libero_mixed_comparison.mp4" type="video/mp4"/></video></div>
+<div class="demo-summary"><div><span>FROZEN</span><b>7<small>/20</small></b></div><div aria-hidden="true" class="demo-arrow">→</div><div class="ours"><span>VISTAMIX</span><b>13<small>/20</small></b></div><p>Successful episodes in this recorded batch. Task 5 · mixed shift · seed 1087. The pooled results above use the full ten-task evaluation.</p></div>
 </div></section>
-<section id="resources" class="section"><div class="wrap"><div class="head"><p class="kicker">05 · Resources</p><h2>Explore FedVista.</h2></div><div class="resource-grid"><a href="assets/papers/FedVista.pdf"><span>01 / MANUSCRIPT</span><h3>Read the paper ↗</h3><p>Method, evaluation and results.</p></a><a href="assets/papers/FedVista_supplement.pdf"><span>02 / SUPPLEMENT</span><h3>Go into the details ↗</h3><p>Derivations, proofs and protocols.</p></a><a href="https://github.com/Anonymous-for-Sub/FedWorldMix"><span>03 / IMPLEMENTATION</span><h3>Explore the code ↗</h3><p>VistaMix, configurations and backbone integrations.</p></a></div></div></section>
-<section id="bibtex" class="section citation-section"><div class="wrap narrow"><p class="kicker">Citation</p><div class="bib"><button id="bib-copy" type="button">Copy</button><pre id="bib-text">@misc{fedvista2026,
+<section class="section" id="resources"><div class="wrap"><div class="head"><p class="kicker">05</p><h2>Paper and code</h2></div><div class="resource-grid"><a href="assets/papers/FedVista.pdf"><span>01 / MANUSCRIPT</span><h3>Main paper ↗</h3><p>Method and experimental results.</p></a><a href="assets/papers/FedVista_supplement.pdf"><span>02 / SUPPLEMENT</span><h3>Supplementary material ↗</h3><p>Derivations, proofs and evaluation protocols.</p></a><a href="https://github.com/Anonymous-for-Sub/FedWorldMix"><span>03 / IMPLEMENTATION</span><h3>Source code ↗</h3><p>Implementation, configurations and tests.</p></a></div></div></section>
+<section class="section citation-section" id="bibtex"><div class="wrap narrow"><p class="kicker">Citation</p><div class="bib"><button id="bib-copy" type="button">Copy</button><pre id="bib-text">@misc{fedvista2026,
   title = {FedVista: Robust Federated VLA Learning
            from Diverse Visual Worlds},
   author = {Anonymous Authors},
   year = {2026}
-}</pre></div><p id="copy-status" class="fine" role="status"></p></div></section>
+}</pre></div><p class="fine" id="copy-status" role="status"></p></div></section>
 </main>
-<footer class="site-footer"><a class="footer-brand" href="#paper">FedVista<span>.</span></a><p>Robust federated VLA learning from diverse visual worlds.</p><p class="fine">Website adapted from <a href="https://nvlabs.github.io/LongLive/Long-WAM/">Long-WAM</a> · <a href="NOTICE.md">Attribution &amp; license</a></p></footer>
+<footer class="site-footer"><a class="footer-brand" href="#paper">FedVista</a><div><a href="https://github.com/Anonymous-for-Sub/FedWorldMix">Code</a><a href="https://github.com/Anonymous-for-Sub/FedWorldMix/blob/main/LICENSE">Software license</a><a href="NOTICE.md">Website credits</a></div></footer>
 </body></html>

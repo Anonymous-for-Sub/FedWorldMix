@@ -1,0 +1,14 @@
+FedVista
+Copyright 2026 FedVista contributors.
+
+The original software, configuration files and documentation in this repository
+are licensed under the Apache License, Version 2.0. See LICENSE.
+
+Third-party source retains its original notices:
+- code/phaseb/hpt/: HPT components credited to Lirui Wang and the Hugging Face team,
+  under Apache 2.0. Existing notices remain in each source file.
+- The project page was adapted from the NVlabs/LongLive Long-WAM website,
+  under Apache 2.0. See docs/NOTICE.md.
+
+Research artifacts (paper PDFs, recorded videos and source images) are outside
+the software license. See docs/assets/README.md for their scope and attribution.
