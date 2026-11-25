@@ -22,6 +22,11 @@
       "sha256": "1e32ec4d19418947586804331a5e9c0e631c3f852fd239f4b5f814cca3cdeb78"
     },
     {
+      "path": "assets/figures/piper.svg",
+      "bytes": 190888,
+      "sha256": "500f0aaab0b1067bb20f40ab42f8cfad69199bd3895e60dfc389ab3fef489742"
+    },
+    {
       "path": "assets/figures/replica.svg",
       "bytes": 123380,
       "sha256": "54d443d8e5755dfeb03a3dd132738728904b88b8fa420266ec47582b256e1e40"

@@ -138,5 +138,19 @@
     "vector_drawings": 13,
     "observation_images": 6,
     "glyphs": 104
+  },
+  {
+    "name": "piper",
+    "source": "qualitative/Q04_piper_real_3dgs_sequence.pdf",
+    "source_sha256": "e9e08d60383d132dc6f95b7846032997bc887ae7e1502c805373426210c0befe",
+    "viewbox": [
+      0.0,
+      0.0,
+      515.52001953125,
+      123.83999633789062
+    ],
+    "vector_drawings": 27,
+    "observation_images": 8,
+    "glyphs": 135
   }
 ]

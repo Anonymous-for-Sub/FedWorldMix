@@ -23,6 +23,7 @@ FIGURES = {
     'replica': 'qualitative/Q01_replica8_go2_g1.pdf',
     'robosplat': 'qualitative/Q02_robosplat_visual_worlds.pdf',
     'robotwin': 'qualitative/Q08_robotwin_camera_ladder.pdf',
+    'piper': 'qualitative/Q04_piper_real_3dgs_sequence.pdf',
 }
 
 def main():

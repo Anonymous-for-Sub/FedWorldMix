@@ -40,10 +40,18 @@
   });
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let running=!reduced.matches, visible=false, current=0, elapsed=0,last=0;
+  const phone=matchMedia('(max-width:700px)');
+  const frames=['95 22 220 395','275 22 324 205','338 254 261 164','647 16 205 258'];
+  const layer=document.createElementNS(ns,'g');
+  [...svg.children].filter(e=>!['defs','title','desc'].includes(e.tagName)).forEach(e=>layer.append(e));
+  const clipDefs=el('defs',{},svg),clip=el('clipPath',{id:'method-stage-window',clipPathUnits:'userSpaceOnUse'},clipDefs);
+  const viewport=el('rect',{},clip);layer.setAttribute('clip-path','url(#method-stage-window)');svg.append(layer);
+  function frame(){const bounds=phone.matches&&!panel.classList.contains('expanded')?frames[current]:'0 0 960 449.01237';svg.setAttribute('viewBox',bounds);const[x,y,width,height]=bounds.split(' ').map(Number);for(const[k,v]of Object.entries({x,y,width,height}))viewport.setAttribute(k,v);}
+  phone.addEventListener('change',frame);
   function select(index,manual=false){current=index;elapsed=0;if(manual)running=false;
     buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
     overlay.querySelectorAll('.flow-stage').forEach((g,i)=>g.classList.toggle('active',i===index));
-    document.getElementById('overview-description').textContent=descriptions[index];updateControl();}
+    document.getElementById('overview-description').textContent=descriptions[index];frame();updateControl();}
   function updateControl(){play.textContent=running?'Pause animation':'Play animation';play.setAttribute('aria-pressed',String(running));panel.dataset.playing=String(running);}
   function tick(time){const delta=last?Math.min(time-last,80):0;last=time;
     if(running&&visible&&!document.hidden){elapsed+=delta;if(elapsed>=5000)select((current+1)%4);}
@@ -60,7 +68,7 @@
     event.preventDefault();buttons[n].focus();select(n,true);
   });
   const expand=document.getElementById('overview-expand'),close=document.getElementById('overview-close');
-  function enlarged(on){panel.classList.toggle('expanded',on);document.body.classList.toggle('figure-open',on);close.hidden=!on;if(on){close.focus();}else expand.focus();}
+  function enlarged(on){panel.classList.toggle('expanded',on);document.body.classList.toggle('figure-open',on);close.hidden=!on;frame();expand.setAttribute('aria-expanded',String(on));if(on){close.focus();}else expand.focus();}
   expand.addEventListener('click',()=>enlarged(true));close.addEventListener('click',()=>enlarged(false));
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&panel.classList.contains('expanded'))enlarged(false);});
   select(0);requestAnimationFrame(tick);
