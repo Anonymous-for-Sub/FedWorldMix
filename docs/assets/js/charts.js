@@ -86,5 +86,5 @@
   reduced.addEventListener('change',()=>{if(reduced.matches)controllers.forEach(c=>c.finish());});
   // Quiet entrance for non-chart content; no hidden content when JS is absent.
   const entries=new IntersectionObserver(list=>list.forEach(entry=>{if(!entry.isIntersecting)return;entries.unobserve(entry.target);if(!reduced.matches)entry.target.animate([{opacity:.25,translate:'0 10px'},{opacity:1,translate:'0 0'}],{duration:550,easing:'ease-out'});}),{threshold:.12});
-  document.querySelectorAll('.world-row figure,.quality-row>.paper-figure,.piper-grid figure,.resource-links a').forEach(e=>entries.observe(e));
+  document.querySelectorAll('.coverage-row,.world-pair figure,.piper-grid figure,.resource-links a').forEach(e=>entries.observe(e));
 })();
